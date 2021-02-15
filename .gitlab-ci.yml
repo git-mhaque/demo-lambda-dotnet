@@ -1,0 +1,27 @@
+image: microsoft/dotnet:latest
+
+stages:
+    - build
+    - test
+
+variables:
+    src_dir: "./HelloFunction/src/HelloFunction" 
+    test_dir: "./HelloFunction/test/HelloFunction.Tests"
+    
+before_script:
+    - "cd $src_dir"
+    - "dotnet restore"
+    - "cd $test_dir"
+    - "dotnet restore"
+    
+build:
+    stage: build
+    script:
+        - "cd $src_dir"
+        - "dotnet build"
+
+test:
+    stage: test
+    script: 
+        - "cd $test_dir"
+        - "dotnet test"
