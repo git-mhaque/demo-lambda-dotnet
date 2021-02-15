@@ -11,6 +11,7 @@ variables:
 before_script:
     - "cd $src_dir"
     - "dotnet restore"
+    - "cd ../../../"
     - "cd $test_dir"
     - "dotnet restore"
     
