@@ -9,20 +9,19 @@ variables:
     test_dir: "./HelloFunction/test/HelloFunction.Tests"
     
 before_script:
-    - "cd $src_dir"
-    - "dotnet restore"
-    - "cd ../../../"
-    - "cd $test_dir"
-    - "dotnet restore"
+    - echo "pre script"
     
 build:
     stage: build
     script:
+        - echo "building..."
         - "cd $src_dir"
         - "dotnet build"
+        - "cd ../../../"
 
 test:
     stage: test
     script: 
+        - echo "testing..."
         - "cd $test_dir"
         - "dotnet test"
